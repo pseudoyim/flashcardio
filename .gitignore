@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.pyc
+*.egg-info
+build/
+dist/
+skein/java/
+skein/proto/*_pb2*.py
+docs/build/
+.cache/
+.coverage
+.pytest_cache/
+.eggs/
+htmlcov/
+*.swp
+pkgs/
+~$*.xlsx
+batches/*/scans/*/*.txt
+.DS_Store
+.idea/
+.ipynb_checkpoints/
