@@ -93,10 +93,6 @@ def start(filename, review_all=False, swap=False, keep_order=False):
         rows = list(rows)
         header, rows_list = rows[0], rows[1:]
 
-        # Check if we're only reviewing active rows.
-        if not review_all:
-            rows_list = [i for i in rows_list if i[-1] == '1']
-
         # Check if we're keeping the order (don't randomize).
         if not keep_order:
             shuffle(rows_list)
@@ -111,6 +107,12 @@ def start(filename, review_all=False, swap=False, keep_order=False):
 
         # Initial question.
         for row in rows_list:
+
+            # Check if we're only reviewing active rows.
+            if not review_all:
+                if row[active_status] == '0':
+                    continue
+
             print('\n============================================================')
             print(f' {current}/{total}\n\n')
             print('   Q:', textwrap.fill(row[ques], width=54, subsequent_indent='     '))
@@ -134,7 +136,7 @@ def start(filename, review_all=False, swap=False, keep_order=False):
             response_1 = get_input(question_1, options_1)
 
             if response_1 == 'f':
-                print('~~~~~~~~~~~~~~~~~~~~\n\n')
+                print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
                 print('   A:', textwrap.fill(row[ans], width=54, subsequent_indent='     '))
                 print('\n')
                 question_2 = '(N)ext, (Q)uit: '
