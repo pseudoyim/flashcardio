@@ -1,28 +1,71 @@
 # flashcardio
-CLI flashcard app that jogs your memory.
-Spend more time learning from flashcards and less time making them.
+A CLI flashcard app that jogs your memory.
 
 ## Installation
 
 (Coming soon.)
 
 ## Usage
+```
+usage: flashcardio
 
-flashcardio [OPTIONS]
+A CLI flashcard app that jogs your memory.
 
-LIST 		Lists available CSV files in your data dir (FLASHCARDIO_DATA).
+positional arguments:
+  {add,delete,list,start}
 
-ADD
-<FILENAME>	Add CSV to your data dir.
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+```
 
-DELETE
-<FILENAME>	Delete CSV from your data dir.
+### `add`
+```
+usage: flashcardio add [-h] filepath
 
-START session options:
-filename		
---review-all	Disregards "active" field and puts all rows in circulation.
---swap			Swap column A and B (i.e. question and answer).
+Add a file to your data dir ($FLASHCARDIO_DATA).
 
-TODO:
-- View full list of cards.
-- Let SPACE key be a proxy for 'flip' and 'next'; e.g. '(F)lip/[SPACE]'. (see 'ncurses' or 'keyboard' package on PyPI)
+positional arguments:
+  filepath    Path to file to add to data dir ($FLASHCARDIO_DATA).
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+### `delete`
+```
+usage: flashcardio delete [-h] filename
+
+Delete a file from your data dir ($FLASHCARDIO_DATA).
+
+positional arguments:
+  filename    Filename to delete from data dir ($FLASHCARDIO_DATA).
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+### `list`
+```
+usage: flashcardio list [-h]
+
+List all files in data dir ($FLASHCARDIO_DATA).
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+### `start`
+```
+usage: flashcardio start [-h] [--review-all] [--swap] filename
+
+Add a file to your data dir ($FLASHCARDIO_DATA).
+
+positional arguments:
+  filename      Filename to review.
+
+optional arguments:
+  -h, --help    show this help message and exit
+  --review-all  Review all rows, regardless of their "active" status.
+  --swap        Swap column A and B (i.e. question and answer).
+```
