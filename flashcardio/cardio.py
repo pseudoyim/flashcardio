@@ -123,15 +123,15 @@ def start(filename, review_all=False, swap=False, keep_order=False):
                 print(f'Status: {status_str}\n')
 
                 if status_str == 'ACTIVE':
-                    question_1 = '(F)lip, (N)ext, (D)eactivate, (Q)uit: '
-                    options_1 = ['f', 'n', 'd', 'q']
+                    question_1 = '(F)lip, (S)kip, (D)eactivate, (Q)uit: '
+                    options_1 = ['f', 's', 'd', 'q']
                 else:
-                    question_1 = '(F)lip, (N)ext, (A)ctivate, (Q)uit: '
-                    options_1 = ['f', 'n', 'a', 'q']
+                    question_1 = '(F)lip, (S)kip, (A)ctivate, (Q)uit: '
+                    options_1 = ['f', 's', 'a', 'q']
 
             else:
-                question_1 = '(F)lip, (N)ext, (D)eactivate, (Q)uit: '
-                options_1 = ['f', 'n', 'd', 'q']
+                question_1 = '(F)lip, (S)kip, (D)eactivate, (Q)uit: '
+                options_1 = ['f', 's', 'd', 'q']
             
             response_1 = get_input(question_1, options_1)
 
@@ -139,18 +139,18 @@ def start(filename, review_all=False, swap=False, keep_order=False):
                 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
                 print('   A:', textwrap.fill(row[ans], width=54, subsequent_indent='     '))
                 print('\n')
-                question_2 = '(N)ext, (Q)uit: '
-                options_2 = ['n', 'q']
+                question_2 = '(F)orward, (Q)uit: '
+                options_2 = ['f', 'q']
                 response_2 = get_input(question_2, options_2)
 
-                if response_2 == 'n':
+                if response_2 == 'f':
                     current += 1
                     continue
 
                 elif response_2 == 'q':
                     save_file_and_exit(header, rows_list, filename)
 
-            elif response_1 == 'n':
+            elif response_1 == 's':
                 current += 1
                 continue
 
@@ -165,5 +165,4 @@ def start(filename, review_all=False, swap=False, keep_order=False):
             elif response_1 == 'q':
                 save_file_and_exit(header, rows_list, filename)
 
-        # TODO: write the rows back to the csv file in case the user deactivated a row.
         save_file_and_exit(header, rows_list, filename)
